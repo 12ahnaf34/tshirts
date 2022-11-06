@@ -7,10 +7,36 @@
     <title>T-Shirts</title>
   </head>
   <style>
-    body {
+    body,
+    html {
+      display: grid;
+      width: 100%;
+
+      justify-items: center;
       margin: 0;
-      display: block;
+      padding: 0;
+
+      background-color: #fdfdfb;
       font-family: "Varela";
+    }
+
+    #root {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    @media (min-width: 1920px) {
+      #root {
+        width: 1920px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      body,
+      html {
+        background-color: #6b9e9a;
+      }
     }
 
     @font-face {

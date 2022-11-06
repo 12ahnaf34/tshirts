@@ -1,24 +1,129 @@
 import styled from "styled-components";
-
-export const colors = {
-  dark: "#2D2424",
-  light: "#E0C097",
-  brown: "#5C3D2E",
-  redBrown: "#B85C38",
-};
+import { colors } from "../../App.styled";
 
 export const Container = styled.div`
   min-height: 100vh;
   width: 100%;
-  container-type: inline-container;
-  background-color: ${colors.dark};
+  display: grid;
+
+  align-items: start;
+  justify-items: center;
+
+  background-color: ${colors.green};
 `;
 
-export const Title = styled.h1`
-  margin: 0;
-  padding: 10px;
+export const ClothesContainer = styled.div`
+  width: 60cqi;
+  display: grid;
 
-  text-align: center;
-  font-size: 15cqi;
-  color: ${colors.light};
+  justify-items: center;
+  align-items: center;
+
+  border: 5px solid ${colors.yellow};
+  background-color: #fff;
+
+  @media (min-width: 800px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 30cqi;
+  }
+`;
+
+export const Image = styled.img`
+  width: 100%;
+
+  @media (min-width: 800px) {
+    width: 20cqi;
+    max-height: 30cqi;
+  }
+`;
+
+export const ZenContainer = styled.div`
+  width: 80cqi;
+  display: grid;
+
+  margin-top: 50px;
+  justify-items: center;
+  align-items: center;
+  background-image: url("/zentangle.png");
+  cursor: pointer;
+
+  @media (min-width: 800px) {
+    margin-top: 15cqi;
+  }
+`;
+
+export const ZenTitle = styled.p`
+  width: fit-content;
+  height: fit-content;
+
+  padding: 1cqi;
+  font-size: 8cqi;
+  background-color: #f4e6ca;
+  color: #ff4e80;
+  font-weight: bold;
+
+  @media (min-width: 800px) {
+    font-size: 4cqi;
+  }
+`;
+
+export const DualContainer = styled.div`
+  width: 80cqi;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+
+  margin-top: 20px;
+
+  @media (min-width: 800px) {
+    grid-template-columns: 2fr 1fr;
+  }
+`;
+
+export const CamoContainer = styled.div`
+  display: grid;
+
+  justify-items: center;
+  align-items: center;
+  background-image: url("/camo.png");
+  cursor: pointer;
+`;
+
+export const CamoTitle = styled.p`
+  width: fit-content;
+  height: fit-content;
+
+  padding: 1cqi;
+  font-size: 8cqi;
+  background-color: ${colors.white};
+  color: #555;
+  font-weight: bold;
+
+  @media (min-width: 800px) {
+    font-size: 4cqi;
+  }
+`;
+
+export const ComicContainer = styled.div`
+  display: grid;
+
+  justify-items: center;
+  align-items: center;
+  background-image: url("/comic_background.jpg");
+  cursor: pointer;
+`;
+
+export const ComicTitle = styled.p`
+  width: fit-content;
+  height: fit-content;
+
+  padding: 1cqi;
+  font-size: 8cqi;
+  background-color: ${colors.yellow};
+  color: ${colors.altGreen};
+  font-weight: bold;
+
+  @media (min-width: 800px) {
+    font-size: 4cqi;
+  }
 `;
