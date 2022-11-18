@@ -40,7 +40,7 @@ export const Dropdown = styled.div`
   display: grid;
 
   grid-template-columns: 1fr;
-  grid-template-rows: 80px 1fr 1fr 1fr 0.5fr;
+  grid-template-rows: 80px 1fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
 
@@ -58,6 +58,7 @@ export const Button = styled.button`
   background-color: ${colors.yellow};
   color: ${colors.green};
   font-size: 10cqi;
+  cursor: pointer;
 `;
 
 export const Link = styled.a`
@@ -89,7 +90,7 @@ export const List = styled.ul`
   }
 
   @media (min-width: 2000px) {
-    width: 20cqi;
+    width: 30cqi;
     display: flex;
     justify-content: space-between;
   }
@@ -131,7 +132,8 @@ export const ExternalLink = styled.a`
   }
 `;
 
-export const Title = styled.span`
+export const Title = styled.a`
+  text-decoration: none;
   margin: 0;
   padding: 10px;
 
@@ -139,8 +141,9 @@ export const Title = styled.span`
   font-weight: bold;
   font-size: 10cqi;
   color: ${colors.yellow};
+  cursor: pointer;
 
   @media (min-width: 800px) {
-    font-size: 3cqi;
+    font-size: 5cqi;
   }
 `;
