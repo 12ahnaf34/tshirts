@@ -5,6 +5,7 @@ import App from "./pages/App";
 import ErrorPage from "./ErrorPage";
 import Tshirts from "./pages/Tshirts";
 import Pants from "./pages/Pants";
+import Caps from "./pages/Caps";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
   {
     path: "/pants",
     element: <Pants />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/caps",
+    element: <Caps />,
     errorElement: <ErrorPage />,
   },
 ]);
