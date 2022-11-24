@@ -22,6 +22,7 @@ import {
   ZenContainer,
   ZenTitle,
 } from "./LandingPage.styled";
+import { Navigate } from "react-router-dom";
 
 interface Clothes {
   id: string;
@@ -34,8 +35,7 @@ interface Clothes {
 }
 
 export default function LandingPage(): JSX.Element {
-  //Added caps twice to stop app from crashing
-  const [array, setArray] = useState<Clothes[][]>([tShirts, pants, caps, caps]);
+  const [array, setArray] = useState<Clothes[][]>([tShirts, pants, caps]);
   const [index, setIndex] = useState<number>(0);
   const [resetProgress, setResetProgress] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(5000);
@@ -44,12 +44,12 @@ export default function LandingPage(): JSX.Element {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((old) => old + 1);
+      if (index < array.length - 1) {
+        setIndex((old) => old + 1);
+      } else {
+        setIndex(0);
+      }
     }, duration);
-
-    if (index == array.length - 1) {
-      setIndex(0);
-    }
 
     if (duration == 0) {
       setDuration(5000);
@@ -69,17 +69,26 @@ export default function LandingPage(): JSX.Element {
       setResetProgress(!resetProgress);
       setDuration(0);
     } else if (index == 0) {
-      setIndex(array[0].length - 1);
+      setIndex(array.length - 1);
       setResetProgress(!resetProgress);
       setDuration(0);
     }
   };
 
   const next = () => {
-    setIndex((old) => old + 1);
-    setResetProgress(!resetProgress);
-    setDuration(0);
-    // console.log(array[0][0].image);
+    if (index < array.length - 1) {
+      setIndex((old) => old + 1);
+      setResetProgress(!resetProgress);
+      setDuration(0);
+    } else {
+      setIndex(0);
+      setResetProgress(!resetProgress);
+      setDuration(0);
+    }
+  };
+
+  const goToProductPage = (index: number) => {
+    return <Navigate to="/product" index={index} />;
   };
 
   return (
@@ -88,7 +97,7 @@ export default function LandingPage(): JSX.Element {
         <LeftButton onClick={previous}>
           <AiOutlineArrowLeft />
         </LeftButton>
-        <Image1 src={array[index][0].image} />
+        <Image1 src={array[index][0].image} onClick={() => goToProductPage(index)} />
         <Image2 src={array[index][1].image} />
         <Image3 src={array[index][2].image} />
         <ProgressBar animation={resetProgress ? string : animationString} />

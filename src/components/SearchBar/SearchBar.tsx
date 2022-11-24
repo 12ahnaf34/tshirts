@@ -42,6 +42,7 @@ interface SearchBarProps {
   setColorFilters: Dispatch<SetStateAction<string>>;
   genderFilter: { men: boolean; women: boolean };
   setGenderFilter: Dispatch<SetStateAction<{ men: boolean; women: boolean }>>;
+  runSearch: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 interface Cloth {
@@ -69,33 +70,19 @@ export default function SearchBar(props: SearchBarProps) {
     setColorFilters,
     genderFilter,
     setGenderFilter,
+    runSearch,
   } = props;
 
   const colors: string[] = ["Black", "Yellow", "Blue", "Green", "Grey", "Red", "Pink", "White"];
 
-  const filterToggle = () => {
-    setFilterDisplay((old) => !old);
-  };
+  const filterToggle = () => setFilterDisplay((old) => !old);
 
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
     setSearchTerm(e.currentTarget.value);
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (searchTerm === "") {
-      setClothes(tShirts);
-    } else {
-      const filteredClothes = tShirts.filter((item) => {
-        return (
-          item.name.toLowerCase() == searchTerm.toLowerCase() ||
-          item.tags.includes(searchTerm.toLowerCase()) ||
-          item.company.toLowerCase() == searchTerm.toLowerCase()
-        );
-      });
-
-      setClothes(filteredClothes);
-    }
+  const onRunSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    runSearch(e);
   };
 
   const runGenderFilter = (gender: string) => {
@@ -128,9 +115,10 @@ export default function SearchBar(props: SearchBarProps) {
     }
   }, [clothes, priceToggle]);
 
-  const filterColor = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value == "Color") {
+  const filterColor = (e: React.ChangeEvent<HTMLSelectElement>, text?: string) => {
+    if (e.target.value == "Color" || text == "Color") {
       setClothes(tShirts);
+      setColorFilters(e.target.value);
     } else {
       const filteredClothes = clothes.filter((item) => e.target.value.toLowerCase() == item.color.toLowerCase());
       setColorFilters(e.target.value);
@@ -140,7 +128,7 @@ export default function SearchBar(props: SearchBarProps) {
 
   return (
     <SearchBarContainer>
-      <OneLine onSubmit={onSubmit}>
+      <OneLine onSubmit={onRunSearch}>
         <Filter onClick={filterToggle} />
         <Search onChange={handleSearch} />
         <SearchButton>Search</SearchButton>
@@ -150,7 +138,7 @@ export default function SearchBar(props: SearchBarProps) {
           <Button onClick={() => runGenderFilter("men")}>Male</Button>
           <Button onClick={() => runGenderFilter("women")}>Female</Button>
           <Button onClick={priceSort}>{priceToggle ? "Price: Descending" : "Price: Ascending"}</Button>
-          <ColorSelect onChange={filterColor}>
+          <ColorSelect onChange={filterColor} value={colorFilters}>
             <Option>Color</Option>
             {colors.map((item) => {
               return (

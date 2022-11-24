@@ -13,6 +13,7 @@ import {
   PageNumber,
   NothingFound,
   FilterTag,
+  GenderFilterCloseButton,
 } from "./ClothesDisplay.styled";
 
 //this was in as a variable not sure why??? type: string;
@@ -43,10 +44,11 @@ interface ClothesDisplayProps {
   setCurrentPage: Dispatch<SetStateAction<number>>;
   genderFilter: { men: boolean; women: boolean };
   setGenderFilter: Dispatch<SetStateAction<{ men: boolean; women: boolean }>>;
+  removeGenderFilter: () => void;
 }
 
 export default function ClothesDisplay(props: ClothesDisplayProps) {
-  const { clothes, priceFilter, totalPages, currentPage, setCurrentPage, currentClothes, genderFilter, setGenderFilter } = props;
+  const { clothes, priceFilter, totalPages, currentPage, setCurrentPage, currentClothes, genderFilter, setGenderFilter, removeGenderFilter } = props;
 
   let pages: number[] = [];
   for (let a = 1; a <= totalPages; a++) {
@@ -66,15 +68,25 @@ export default function ClothesDisplay(props: ClothesDisplayProps) {
     }
   };
 
-  //Needed to show filtered clothes
-  if (currentPage > totalPages) previousPage();
+  useEffect(() => {
+    //Needed to show filtered clothes
+    if (currentPage > totalPages) setCurrentPage(1);
+  }, [currentPage]);
 
   return (
     <ClothesDisplayContainer>
       <span style={{ marginTop: 20 }}>
         <FilterTag>{priceFilter ? "Descending" : "Ascending"}</FilterTag>
-        {genderFilter.men && <FilterTag>Male</FilterTag>}
-        {genderFilter.women && <FilterTag>Female</FilterTag>}
+        {genderFilter.men && (
+          <FilterTag>
+            Male<GenderFilterCloseButton onClick={removeGenderFilter}>X</GenderFilterCloseButton>
+          </FilterTag>
+        )}
+        {genderFilter.women && (
+          <FilterTag>
+            Female<GenderFilterCloseButton onClick={removeGenderFilter}>X</GenderFilterCloseButton>
+          </FilterTag>
+        )}
       </span>
       <ClothesContainer>
         {currentClothes.map((item) => {
