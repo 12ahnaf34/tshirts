@@ -54,6 +54,7 @@ export const List2 = styled.ul`
 `;
 
 export const Item = styled.li`
+  width:fit-content;
   display: grid;
   font-size: 4cqi;
   justify-self:center;

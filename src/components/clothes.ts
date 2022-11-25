@@ -7,7 +7,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "black",
     image: "/tshirts/black_0.png",
-    tags: ["black", "tshirt", "short sleeve", "solid", "plain", "men", "male"],
+    tags: ["black", "tshirt", "t shirt", "short sleeve", "solid", "plain", "men", "male"],
   },
   {
     id: "T1",
@@ -17,7 +17,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "yellow",
     image: "/tshirts/yellow_0.png",
-    tags: ["yellow", "tshirt", "short sleeve", "solid", "plain", "men", "male"],
+    tags: ["yellow", "tshirt", "t shirt", "short sleeve", "solid", "plain", "men", "male"],
   },
   {
     id: "T2",
@@ -27,7 +27,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "blue",
     image: "/tshirts/blue_0.png",
-    tags: ["blue", "tshirt", "short sleeve", "route", "men", "male"],
+    tags: ["blue", "tshirt", "t shirt", "short sleeve", "route", "men", "male"],
   },
   {
     id: "T3",
@@ -37,7 +37,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "green",
     image: "/tshirts/wildSpark.jpg",
-    tags: ["blue", "tshirt", "short sleeve", "men", "male"],
+    tags: ["green", "tshirt", "t shirt", "short sleeve", "men", "male"],
   },
   {
     id: "T4",
@@ -47,7 +47,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "grey",
     image: "/tshirts/hipsterPremium.jpg",
-    tags: ["grey", "tshirt", "short sleeve", "men", "hip-hop", "male"],
+    tags: ["grey", "tshirt", "t shirt", "short sleeve", "men", "hip-hop", "male"],
   },
   {
     id: "T5",
@@ -57,7 +57,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "red",
     image: "/tshirts/warriorDistressed.jpg",
-    tags: ["red", "tshirt", "short sleeve", "men", "male"],
+    tags: ["red", "tshirt", "t shirt", "short sleeve", "men", "male"],
   },
   {
     id: "T6",
@@ -67,7 +67,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "black",
     image: "/tshirts/thankful.jfif",
-    tags: ["black", "tshirt", "short sleeve", "women", "female"],
+    tags: ["black", "tshirt", "t shirt", "short sleeve", "women", "female"],
   },
   {
     id: "T7",
@@ -77,7 +77,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "pink",
     image: "/tshirts/casualDressy.jpg",
-    tags: ["pink", "tshirt", "short sleeve", "women", "female"],
+    tags: ["pink", "tshirt", "t shirt", "short sleeve", "women", "female"],
   },
   {
     id: "T8",
@@ -87,7 +87,7 @@ export const tShirts = [
     type: "long sleeve",
     color: "red",
     image: "/tshirts/perfectLongSleeve.jpg",
-    tags: ["red", "tshirt", "long sleeve", "women", "female"],
+    tags: ["red", "tshirt", "t shirt", "long sleeve", "women", "female"],
   },
   {
     id: "T9",
@@ -97,7 +97,7 @@ export const tShirts = [
     type: "long sleeve",
     color: "white",
     image: "/tshirts/fallFloral.jpg",
-    tags: ["white", "tshirt", "floral", "long sleeve", "women", "female"],
+    tags: ["white", "tshirt", "t shirt", "floral", "long sleeve", "women", "female"],
   },
   {
     id: "T10",
@@ -107,7 +107,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "white",
     image: "/tshirts/nauticaWhite.jpg",
-    tags: ["white", "tshirt", "short sleeve", "women", "female"],
+    tags: ["white", "tshirt", "t shirt", "short sleeve", "women", "female"],
   },
   {
     id: "T11",
@@ -117,7 +117,7 @@ export const tShirts = [
     type: "short sleeve",
     color: "yellow",
     image: "/tshirts/bringOnTheSunshine.jpg",
-    tags: ["yellow", "tshirt", "short sleeve", "graphic", "women", "female"],
+    tags: ["yellow", "tshirt", "t shirt", "short sleeve", "graphic", "women", "female"],
   },
 ];
 

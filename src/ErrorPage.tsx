@@ -11,5 +11,11 @@ export default function ErrorPage(): JSX.Element {
         <Title>{error.name || error.message}</Title>
       </AppContainer>
     );
-  } else return <Title>No idea what happened {":)"}</Title>;
+  } else
+    return (
+      <AppContainer>
+        <Title>Error</Title>
+        <Title style={{ height: "100vh" }}>No idea what happened {":)"}</Title>;
+      </AppContainer>
+    );
 }

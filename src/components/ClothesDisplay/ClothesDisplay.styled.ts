@@ -188,3 +188,15 @@ export const FilterTag = styled.span`
     font-size: 2cqi;
   }
 `;
+
+export const GenderFilterCloseButton = styled.button`
+  background-color: ${colors.green};
+  color: ${colors.white};
+  font-size: 5cqi;
+  border: 2px solid ${colors.white};
+  border-radius: 10px;
+
+  @media (min-width: 800px) {
+    font-size: 2cqi;
+  }
+`;

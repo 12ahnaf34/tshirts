@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { AppContainer } from "../App.styled";
-import { caps, pants, tShirts } from "../components/clothes";
-import ClothesDisplay from "../components/ClothesDisplay/ClothesDisplay";
-import Footer from "../components/Footer/Footer";
+import { useState, useEffect } from "react";
+import { BsToggle2Off } from "react-icons/bs";
+import { AppContainer, Title } from "../App.styled";
 import Navbar from "../components/Navbar/Navbar";
 import SearchBar from "../components/SearchBar/SearchBar";
+import { pants } from "../components/clothes";
+import ClothesDisplay from "../components/ClothesDisplay/ClothesDisplay";
 
 interface Cloth {
   id: string;
@@ -17,9 +17,9 @@ interface Cloth {
   tags: string[];
 }
 
-export default function Tshirts() {
+export default function Trousers(): JSX.Element {
   const [display, setDisplay] = useState<boolean>(false);
-  const [clothes, setClothes] = useState<Cloth[]>(tShirts);
+  const [clothes, setClothes] = useState<Cloth[]>(pants);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const [postsPerPage, setPostsPerPage] = useState<number>(6);
@@ -44,21 +44,19 @@ export default function Tshirts() {
   const removeGenderFilter = () => {
     setGenderFilter({ men: false, women: false });
     if (clothes.length == 0) {
-      setClothes(tShirts);
+      setClothes(pants);
     } else if (colorFilters !== "Color") {
-      const filteredClothes = tShirts.filter((item) => colorFilters.toLowerCase() == item.color.toLowerCase());
+      const filteredClothes = pants.filter((item) => colorFilters.toLowerCase() == item.color.toLowerCase());
       setClothes(filteredClothes);
-    } else if (clothes.length > 0 && colorFilters === "Color") {
-      setClothes(tShirts);
     }
   };
 
   const runSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (searchTerm === "") {
-      setClothes(tShirts);
+      setClothes(pants);
     } else {
-      const filteredClothes = tShirts.filter((item) => {
+      const filteredClothes = pants.filter((item) => {
         return (
           item.name.toLowerCase() == searchTerm.toLowerCase() ||
           item.tags.includes(searchTerm.toLowerCase()) ||
@@ -72,13 +70,13 @@ export default function Tshirts() {
     }
   };
 
-  if (display) {
+  if (display)
     return (
       <AppContainer>
         <Navbar display={display} setDisplay={setDisplay} />
       </AppContainer>
     );
-  } else {
+  else
     return (
       <AppContainer>
         <Navbar display={display} setDisplay={setDisplay} />
@@ -108,8 +106,6 @@ export default function Tshirts() {
           genderFilter={genderFilter}
           removeGenderFilter={removeGenderFilter}
         />
-        <Footer />
       </AppContainer>
     );
-  }
 }

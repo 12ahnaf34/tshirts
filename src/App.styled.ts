@@ -16,13 +16,21 @@ export const AppContainer = styled.div`
 
   padding: 0;
   margin: 0;
+  font-family: Varela;
 
   @media (min-width: 1920px) {
     width: 1920px;
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.a`
+  text-decoration: none;
   text-align: center;
   font-size: 4vw;
+  font-weight: bold;
+  cursor: pointer;
+
+  margin: 0;
+  color: ${colors.yellow};
+  background-color: ${colors.green};
 `;

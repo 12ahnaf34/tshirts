@@ -35,7 +35,7 @@ export const Search = styled.input`
   border: 2px solid ${colors.green};
   font-family: Varela;
   font-size: 6cqi;
-  color: ${colors.altGreen};
+  color: ${colors.green};
 
   &:focus {
     outline: 2px solid ${colors.white};
@@ -173,7 +173,7 @@ export const Button = styled.button`
 
   &:hover {
     border: 2px solid ${colors.white};
-    background-color: ${colors.orange};
+    background-color: ${colors.green};
     color: ${colors.white};
   }
 
@@ -197,7 +197,7 @@ export const ColorSelect = styled.select`
 
   &:hover {
     border: 2px solid ${colors.white};
-    background-color: ${colors.orange};
+    background-color: ${colors.green};
     color: ${colors.white};
   }
 
