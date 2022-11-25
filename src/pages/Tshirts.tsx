@@ -45,9 +45,11 @@ export default function Tshirts() {
     setGenderFilter({ men: false, women: false });
     if (clothes.length == 0) {
       setClothes(tShirts);
-    } else {
+    } else if (colorFilters !== "Color") {
       const filteredClothes = tShirts.filter((item) => colorFilters.toLowerCase() == item.color.toLowerCase());
       setClothes(filteredClothes);
+    } else if (clothes.length > 0 && colorFilters === "Color") {
+      setClothes(tShirts);
     }
   };
 

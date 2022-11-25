@@ -45,7 +45,7 @@ export default function Trousers(): JSX.Element {
     setGenderFilter({ men: false, women: false });
     if (clothes.length == 0) {
       setClothes(pants);
-    } else {
+    } else if (colorFilters !== "Color") {
       const filteredClothes = pants.filter((item) => colorFilters.toLowerCase() == item.color.toLowerCase());
       setClothes(filteredClothes);
     }

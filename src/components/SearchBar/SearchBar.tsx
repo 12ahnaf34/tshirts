@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { caps, pants, tShirts } from "../clothes";
 import { Button, ColorSelect, Filter, FilterOptionsContainer, OneLine, Option, Search, SearchBarContainer, SearchButton, Thumbnail } from "./SearchBar.styled";
 import { BsFillFilterSquareFill } from "react-icons/bs";
 import type { Dispatch, SetStateAction } from "react";
 import Tshirts from "../../pages/Tshirts";
+import { Item } from "../Footer/Footer.styled";
 
 interface SearchBarProps {
   clothes: {
@@ -73,7 +74,18 @@ export default function SearchBar(props: SearchBarProps) {
     runSearch,
   } = props;
 
-  const colors: string[] = ["Black", "Yellow", "Blue", "Green", "Grey", "Red", "Pink", "White"];
+  const [colors, setColors] = useState<string[]>([]);
+
+  useEffect(() => {
+    let currentColors: string[] = [];
+    for (let a = 0; a < clothes.length; a++) {
+      const firstChar = clothes[a].color.slice(0, 1).toUpperCase();
+      const restOfString = clothes[a].color.slice(1, clothes[a].color.length);
+      const final = firstChar + restOfString;
+      if (!currentColors.includes(final)) currentColors.push(final);
+    }
+    setColors(currentColors);
+  }, []);
 
   const filterToggle = () => setFilterDisplay((old) => !old);
 

@@ -59,9 +59,9 @@ export default function Navbar(props: NavbarProps) {
       <Dropdown>
         <Button onClick={menu}>X</Button>
         <Link href="/">Home</Link>
-        <Link href="tshirts">T-Shirts</Link>
-        <Link href="pants">Trousers</Link>
-        <Link href="pants">Caps</Link>
+        <Link href="/tshirts">T-Shirts</Link>
+        <Link href="/trousers">Trousers</Link>
+        <Link href="/caps">Caps</Link>
       </Dropdown>
     );
   } else {
@@ -77,7 +77,7 @@ export default function Navbar(props: NavbarProps) {
             <ExternalLink href="/tshirts">T-Shirts</ExternalLink>
           </li>
           <li>
-            <ExternalLink href="/pants">Trousers</ExternalLink>
+            <ExternalLink href="/trousers">Trousers</ExternalLink>
           </li>
           <li>
             <ExternalLink href="/caps">Caps</ExternalLink>
@@ -87,8 +87,11 @@ export default function Navbar(props: NavbarProps) {
           <Cart onClick={goToCart} />
           {currentUser !== null ? (
             <LogoutContainer>
-              <GreetText>Hello,</GreetText>
-              <GreetText>{currentUser?.email?.split("@")[0]}</GreetText>
+              <GreetText>
+                Hello,
+                <br />
+                {currentUser?.email?.split("@")[0]}
+              </GreetText>
               <LogoutButton onClick={signOut}>Log Out</LogoutButton>
             </LogoutContainer>
           ) : (

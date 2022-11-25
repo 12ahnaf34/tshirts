@@ -163,17 +163,37 @@ export const Title = styled.a`
 `;
 
 export const UserIcons = styled.div`
-  width: fit-content;
+  width: 20cqi;
   display: grid;
 
-  grid-template-columns: 1fr 1fr;
-  grid-row: 1;
+  grid-template-columns: 1fr;
+  grid-row: 1/3;
   grid-column: 3;
   gap: 5px;
+  align-self: center;
   justify-self: end;
   justify-items: center;
 
-  margin-right: 5px;
+  @media (min-width: 800px) {
+    width: 20cqi;
+    grid-template-columns: 1fr 2fr;
+    align-self: center;
+    justify-self: center;
+  }
+
+  @media (min-width: 1200px) {
+    width: 16cqi;
+    grid-template-columns: 1fr 2fr;
+    align-self: start;
+    justify-self: end;
+  }
+
+  @media (min-width: 1500px) {
+    width: 14cqi;
+    grid-template-columns: 1fr 2fr;
+    align-self: start;
+    justify-self: end;
+  }
 `;
 
 export const SignIn = styled(MdAccountBox)`
@@ -199,7 +219,8 @@ export const SignIn = styled(MdAccountBox)`
 export const Cart = styled(MdShoppingCart)`
   display: none;
 
-  align-self: center;
+  align-self: top;
+  justify-self: center;
 
   font-size: 10cqi;
   border-radius: 10px;
@@ -250,21 +271,40 @@ export const Logout = styled(MdLogout)`
 `;
 
 export const GreetText = styled.span`
-  width: fit-content;
+  width: 100%;
+
+  align-self: top;
+
+  padding: 10px;
   color: ${colors.green};
-  font-size: 3cqi;
+  background-color: ${colors.white};
+  font-size: 2cqi;
+  font-weight: bold;
+  border-radius: 10px;
 
   @media (min-width: 800px) {
+    font-size: 1.5cqi;
+  }
+  @media (min-width: 1200px) {
     font-size: 1.2cqi;
   }
 `;
 
 export const LogoutButton = styled(Button)`
-  display: none;
+  width: 100%;
   height: 0;
+  display: none;
+
+  margin-top: 15px;
   background-color: ${colors.yellow};
   color: ${colors.green};
-  font-size: 2cqi;
+  font-family: Varela;
+  font-size: 1.2cqi;
+  font-weight: 600;
+
+  &:hover {
+    display: block;
+  }
 `;
 
 export const LogoutContainer = styled.div`
@@ -273,8 +313,15 @@ export const LogoutContainer = styled.div`
   justify-items: center;
 
   border-radius: 10px;
-  padding: 5px;
-  background-color: ${colors.white};
+
+  &:hover {
+    background-color: ${colors.white};
+    padding: 10px;
+  }
+
+  &:hover ${GreetText} {
+    padding-top: 0px;
+  }
 
   &:hover ${LogoutButton} {
     display: block;
