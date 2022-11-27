@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import SearchBar from "../components/SearchBar/SearchBar";
 import { pants } from "../components/clothes";
 import ClothesDisplay from "../components/ClothesDisplay/ClothesDisplay";
+import Footer from "../components/Footer/Footer";
 
 interface Cloth {
   id: string;
@@ -14,13 +15,15 @@ interface Cloth {
   type: string;
   color: string;
   image: string;
+  description: string;
   tags: string[];
 }
 
 export default function Trousers(): JSX.Element {
+  const localStorageSearchTerm: string = JSON.parse(localStorage.getItem("searchTerm") || "{}");
   const [display, setDisplay] = useState<boolean>(false);
   const [clothes, setClothes] = useState<Cloth[]>(pants);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>(localStorageSearchTerm || "");
 
   const [postsPerPage, setPostsPerPage] = useState<number>(6);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -31,6 +34,29 @@ export default function Trousers(): JSX.Element {
   const [priceToggle, setPriceToggle] = useState<boolean>(false);
   const [colorFilters, setColorFilters] = useState<string>("Color");
   const [genderFilter, setGenderFilter] = useState<{ men: boolean; women: boolean }>({ men: false, women: false });
+
+  useEffect(() => {
+    setSearchTerm(localStorageSearchTerm);
+    const empty = {};
+
+    if (searchTerm === "" || searchTerm === empty) {
+      setClothes(pants);
+    } else if (searchTerm.length > 0) {
+      const filteredClothes = pants.filter((item) => {
+        return (
+          item.name.toLowerCase() == searchTerm.toLowerCase() ||
+          item.tags.includes(searchTerm.toLowerCase()) ||
+          item.company.toLowerCase() == searchTerm.toLowerCase() ||
+          item.tags.includes(searchTerm.replace(/\s/g, "")) ||
+          item.type.replace(/\s/g, "").includes(searchTerm.replace(/\s/g, ""))
+        );
+      });
+
+      setColorFilters("Color");
+      setClothes(filteredClothes);
+    }
+    localStorage.setItem("searchTerm", "");
+  }, []);
 
   useEffect(() => {
     const lastPostIndex: number = currentPage * postsPerPage;
@@ -106,6 +132,7 @@ export default function Trousers(): JSX.Element {
           genderFilter={genderFilter}
           removeGenderFilter={removeGenderFilter}
         />
+        <Footer />
       </AppContainer>
     );
 }

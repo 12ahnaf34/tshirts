@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { AppContainer } from "../App.styled";
 import { caps, pants, tShirts } from "../components/clothes";
 import ClothesDisplay from "../components/ClothesDisplay/ClothesDisplay";
@@ -6,7 +7,7 @@ import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import SearchBar from "../components/SearchBar/SearchBar";
 
-interface Cloth {
+export interface Cloth {
   id: string;
   company: string;
   name: string;
@@ -14,13 +15,15 @@ interface Cloth {
   type: string;
   color: string;
   image: string;
+  description: string;
   tags: string[];
 }
 
 export default function Tshirts() {
+  const localStorageSearchTerm: string = JSON.parse(localStorage.getItem("searchTerm") || "{}");
   const [display, setDisplay] = useState<boolean>(false);
   const [clothes, setClothes] = useState<Cloth[]>(tShirts);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>(localStorageSearchTerm || "");
 
   const [postsPerPage, setPostsPerPage] = useState<number>(6);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -31,6 +34,29 @@ export default function Tshirts() {
   const [priceToggle, setPriceToggle] = useState<boolean>(false);
   const [colorFilters, setColorFilters] = useState<string>("Color");
   const [genderFilter, setGenderFilter] = useState<{ men: boolean; women: boolean }>({ men: false, women: false });
+
+  useEffect(() => {
+    setSearchTerm(localStorageSearchTerm);
+    const empty = {};
+
+    if (searchTerm === "" || searchTerm === empty) {
+      setClothes(tShirts);
+    } else if (searchTerm.length > 0) {
+      const filteredClothes = tShirts.filter((item) => {
+        return (
+          item.name.toLowerCase() == searchTerm.toLowerCase() ||
+          item.tags.includes(searchTerm.toLowerCase()) ||
+          item.company.toLowerCase() == searchTerm.toLowerCase() ||
+          item.tags.includes(searchTerm.replace(/\s/g, "")) ||
+          item.type.replace(/\s/g, "").includes(searchTerm.replace(/\s/g, ""))
+        );
+      });
+
+      setColorFilters("Color");
+      setClothes(filteredClothes);
+    }
+    localStorage.setItem("searchTerm", "");
+  }, []);
 
   useEffect(() => {
     const lastPostIndex: number = currentPage * postsPerPage;

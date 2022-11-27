@@ -15,6 +15,7 @@ interface SearchBarProps {
     type: string;
     color: string;
     image: string;
+    description: string;
     tags: string[];
   }[];
 
@@ -28,6 +29,7 @@ interface SearchBarProps {
         type: string;
         color: string;
         image: string;
+        description: string;
         tags: string[];
       }[]
     >
@@ -94,6 +96,7 @@ export default function SearchBar(props: SearchBarProps) {
   };
 
   const onRunSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e);
     runSearch(e);
   };
 

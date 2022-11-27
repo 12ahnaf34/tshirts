@@ -50,11 +50,11 @@ export const ClothesContainer = styled.div`
 //extra box shadow, not sure why it was there
 //,0 10px 10px rgba(0, 0, 0, 0.22)
 export const Card = styled.div`
-  width: 60%;
+  width: 70%;
+  height: fit-content;
   display: grid;
 
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 0.5fr;
   justify-items: center;
 
   border-radius: 5px;
@@ -62,15 +62,22 @@ export const Card = styled.div`
   background-color: ${colors.white};
 
   @media (min-width: 1200px) {
-    width: 90%;
+    width: 80%;
+    height: fit-content;
   }
 `;
 
 export const Thumbnail = styled.img`
-  width: 90%;
+  max-width: 100%;
+  height: 50cqi;
+
+  @media (min-width: 800px) {
+    height: 20cqi;
+  }
 `;
 
 export const TextArea = styled.div`
+  height: 15cqi;
   display: grid;
 
   align-self: end;

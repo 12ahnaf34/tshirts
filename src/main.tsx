@@ -8,6 +8,7 @@ import Caps from "./pages/Caps";
 import LoginRegister from "./pages/LoginRegister";
 import Cart from "./pages/Cart";
 import Trousers from "./pages/Trousers";
+import ProductPage from "./pages/ProductPage";
 
 const router = createBrowserRouter([
   {
@@ -41,8 +42,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: `/product`,
-    element: <Caps />,
+    path: `/product/:id`,
+    element: <ProductPage />,
     errorElement: <ErrorPage />,
   },
 ]);

@@ -1,14 +1,29 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { IoIosMenu } from "react-icons/io";
 import { colors } from "../../App.styled";
 import { MdAccountBox, MdShoppingCart, MdLogout } from "react-icons/md";
+import { RiAccountBoxFill } from "react-icons/ri";
+
+const breatheAnimation = keyframes`
+  0%   { width:0%; opacity: 0%; }
+  10%  { width:10%; opacity: 10%; }
+  20%  { width:20%; opacity: 20%; }
+  30%  { width:30%; opacity: 30%; }
+  40%  { width:40%; opacity: 40%; }
+  50%  { width:50%; opacity: 50%; }
+  60%  { width:60%; opacity: 60%; }
+  70%  { width:70%; opacity: 70%; }
+  80%  { width:80%; opacity: 80%; }
+  90%  { width:90%; opacity: 90%; }
+  100% { width:100%; opacity: 100%; }
+`;
 
 export const NavbarContainer = styled.div`
   min-height: 1cqi;
   width: 100%;
   display: grid;
 
-  grid-template-columns: 0.7fr 4fr 0.7fr;
+  grid-template-columns: 1fr 4fr 1fr;
   padding: 10px 0;
   border: 0;
   align-items: center;
@@ -25,7 +40,7 @@ export const NavbarContainer = styled.div`
 `;
 
 export const Icon = styled(IoIosMenu)`
-  font-size: 12cqi;
+  font-size: 11cqi;
   color: ${colors.yellow};
   cursor: pointer;
   transition: all 0.4s ease;
@@ -139,11 +154,11 @@ export const ExternalLink = styled.a`
 export const Title = styled.a`
   text-decoration: none;
   margin: 0;
-  padding: 10px;
+  padding: 5px;
 
   text-align: center;
   font-weight: bold;
-  font-size: 10cqi;
+  font-size: 8cqi;
   color: ${colors.yellow};
   cursor: pointer;
 
@@ -163,7 +178,7 @@ export const Title = styled.a`
 `;
 
 export const UserIcons = styled.div`
-  width: 20cqi;
+  width: fit-content;
   display: grid;
 
   grid-template-columns: 1fr;
@@ -171,32 +186,30 @@ export const UserIcons = styled.div`
   grid-column: 3;
   gap: 5px;
   align-self: center;
+  align-items: center;
   justify-self: end;
   justify-items: center;
+  margin-right: 10px;
 
   @media (min-width: 800px) {
-    width: 20cqi;
     grid-template-columns: 1fr 2fr;
-    align-self: center;
-    justify-self: center;
+    align-self: start;
   }
 
   @media (min-width: 1200px) {
-    width: 16cqi;
     grid-template-columns: 1fr 2fr;
     align-self: start;
-    justify-self: end;
   }
 
   @media (min-width: 1500px) {
-    width: 14cqi;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     align-self: start;
-    justify-self: end;
   }
 `;
 
 export const SignIn = styled(MdAccountBox)`
+  grid-column: 2;
+
   background-color: ${colors.green};
   color: ${colors.white};
   font-size: 11cqi;
@@ -219,9 +232,6 @@ export const SignIn = styled(MdAccountBox)`
 export const Cart = styled(MdShoppingCart)`
   display: none;
 
-  align-self: top;
-  justify-self: center;
-
   font-size: 10cqi;
   border-radius: 10px;
   padding: 6px;
@@ -235,7 +245,6 @@ export const Cart = styled(MdShoppingCart)`
   }
 
   @media (min-width: 800px) {
-    display: block;
     font-size: 5.7cqi;
   }
 
@@ -275,10 +284,10 @@ export const GreetText = styled.span`
 
   align-self: top;
 
-  padding: 10px;
+  padding: 3px;
   color: ${colors.green};
   background-color: ${colors.white};
-  font-size: 2cqi;
+  font-size: 3cqi;
   font-weight: bold;
   border-radius: 10px;
 
@@ -291,40 +300,58 @@ export const GreetText = styled.span`
 `;
 
 export const LogoutButton = styled(Button)`
-  width: 100%;
+  width: 0%;
   height: 0;
   display: none;
 
   margin-top: 15px;
+  opacity: 0;
   background-color: ${colors.yellow};
   color: ${colors.green};
   font-family: Varela;
-  font-size: 1.2cqi;
+  font-size: 3cqi;
   font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.4s ease;
+  animation-name: ${breatheAnimation};
+  animation-duration: 0.2s;
 
-  &:hover {
-    display: block;
+  @media (min-width: 800px) {
+    font-size: 1.5cqi;
+  }
+  @media (min-width: 1200px) {
+    font-size: 1.2cqi;
   }
 `;
 
 export const LogoutContainer = styled.div`
   display: grid;
 
+  grid-column: 2;
+  align-self: center;
+  align-items: center;
   justify-items: center;
 
   border-radius: 10px;
 
   &:hover {
     background-color: ${colors.white};
-    padding: 10px;
+    padding: 3px;
   }
 
   &:hover ${GreetText} {
     padding-top: 0px;
   }
 
+  &:hover ~ &${Cart} {
+    align-self: start;
+    color: ${colors.orange};
+  }
+
   &:hover ${LogoutButton} {
-    display: block;
+    width: 100%;
     height: fit-content;
+    display: block;
+    opacity: 100%;
   }
 `;
