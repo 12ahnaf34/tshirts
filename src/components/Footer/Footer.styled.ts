@@ -31,6 +31,7 @@ export const List = styled.ul`
 `;
 
 export const List1 = styled.ul`
+  width: 100%;
   list-style: none;
   margin: 0 20px;
   padding: 0;
@@ -50,11 +51,11 @@ export const List2 = styled.ul`
 
   @media (min-width: 800px) {
     grid-column: 2;
+    margin-bottom: 50px;
   }
 `;
 
 export const Item = styled.li`
-  width:fit-content;
   display: grid;
   font-size: 4cqi;
   justify-self:center;

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { colors } from "../../App.styled";
 
@@ -11,6 +12,9 @@ interface Props {
 interface TextProps {
   backgroundColor: string;
   fontColor: string;
+}
+interface ImageLink {
+  gridarea: string;
 }
 export const Container = styled.div`
   min-height: 100vh;
@@ -45,15 +49,19 @@ export const ClothesContainer = styled.div`
   }
 `;
 
+export const ImageLink = styled(Link)<ImageLink>`
+  grid-area: ${({ gridarea }) => gridarea};
+`;
+
 export const Image1 = styled.img`
   width: 100%;
   z-index: 1;
+  grid-area: 1/1/2/1;
+  cursor: pointer;
 
   @media (min-width: 800px) {
     width: 20cqi;
     max-height: 29cqi;
-
-    grid-area: 1/1/2/2;
   }
 
   -webkit-touch-callout: none;
@@ -73,14 +81,13 @@ export const Image1 = styled.img`
 export const Image2 = styled.img`
   display: none;
   width: 100%;
+  grid-area: 1/2/1/3;
   z-index: 1;
 
   @media (min-width: 800px) {
     display: block;
     width: 20cqi;
     max-height: 29cqi;
-
-    grid-area: 1/2/1/3;
   }
 
   -webkit-touch-callout: none;
@@ -100,14 +107,13 @@ export const Image2 = styled.img`
 export const Image3 = styled.img`
   display: none;
   width: 100%;
+  grid-area: 1/3/1/4;
   z-index: 1;
 
   @media (min-width: 800px) {
     display: block;
     width: 20cqi;
     max-height: 29cqi;
-
-    grid-area: 1/3/1/4;
   }
 
   -webkit-touch-callout: none;
@@ -217,14 +223,16 @@ export const ProgressBar = styled.div<ProgressBar>`
   }
 `;
 
-export const ZenContainer = styled.div`
+export const ZenContainer = styled(Link)`
   width: 80cqi;
   display: grid;
 
   margin-top: 50px;
   justify-items: center;
   align-items: center;
+
   background-image: url("/zentangle.png");
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.4s ease;
 
@@ -265,13 +273,15 @@ export const DualContainer = styled.div`
   }
 `;
 
-export const CamoContainer = styled.div`
+export const CamoContainer = styled(Link)`
   display: grid;
 
   justify-items: center;
   align-items: center;
+
   background-image: url("/camo.png");
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.4s ease;
 
   &:hover {
@@ -294,13 +304,15 @@ export const CamoTitle = styled.p`
   }
 `;
 
-export const ComicContainer = styled.div`
+export const ComicContainer = styled(Link)`
   display: grid;
 
   justify-items: center;
   align-items: center;
+
   background-image: url("/comic_background.jpg");
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.4s ease;
 
   &:hover {
@@ -336,13 +348,14 @@ export const TriContainer = styled.div`
   }
 `;
 
-export const BigLink = styled.div<Props>`
+export const BigLink = styled(Link)<Props>`
   display: grid;
 
   justify-items: center;
   align-items: center;
 
-  background-image: ${({ image }) => image || "url(/camo.png)"};
+  text-decoration: none;
+  background-image: ${({ image }) => image || "url(/warm.png)"};
   cursor: pointer;
   transition: all 0.4s ease;
 
@@ -370,12 +383,14 @@ export const LinkText = styled.p<TextProps>`
   }
 `;
 
-export const SmallLink = styled.div<Props>`
+export const SmallLink = styled(Link)<Props>`
   display: grid;
 
-  background-image: ${({ image }) => image || "url(/camo.png)"};
   justify-items: center;
   align-items: center;
+
+  text-decoration: none;
+  background-image: ${({ image }) => image || "url(/camo.png)"};
   cursor: pointer;
   transition: all 0.4s ease;
 
