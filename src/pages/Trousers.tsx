@@ -74,14 +74,20 @@ export default function Trousers(): JSX.Element {
     } else if (colorFilters !== "Color") {
       const filteredClothes = pants.filter((item) => colorFilters.toLowerCase() == item.color.toLowerCase());
       setClothes(filteredClothes);
+    } else if (clothes.length > 0 && colorFilters === "Color") {
+      setClothes(pants);
     }
   };
 
   const runSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (searchTerm === "") {
+
+    if (searchTerm === "" || searchTerm.toString.length === 0) {
+      console.log("trigger");
+      setGenderFilter({ men: false, women: false });
       setClothes(pants);
     } else {
+      console.log(searchTerm);
       const filteredClothes = pants.filter((item) => {
         return (
           item.name.toLowerCase() == searchTerm.toLowerCase() ||
@@ -120,6 +126,8 @@ export default function Trousers(): JSX.Element {
           setColorFilters={setColorFilters}
           setGenderFilter={setGenderFilter}
           genderFilter={genderFilter}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
         <ClothesDisplay
           clothes={clothes}

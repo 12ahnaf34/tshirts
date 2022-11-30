@@ -9,6 +9,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import ClothesDisplay from "../components/ClothesDisplay/ClothesDisplay";
 import Footer from "../components/Footer/Footer";
 import type { Cloth } from "./Tshirts";
+import ClothesDisplayCaps from "../components/ClothesDisplay/ClothesDisplayCaps";
 
 export default function Caps(): JSX.Element {
   const localStorageSearchTerm: string = JSON.parse(localStorage.getItem("searchTerm") || "{}");
@@ -28,9 +29,8 @@ export default function Caps(): JSX.Element {
 
   useEffect(() => {
     setSearchTerm(localStorageSearchTerm);
-    const empty = {};
 
-    if (searchTerm === "" || searchTerm === empty) {
+    if (searchTerm === "" || searchTerm.toString.length === 0) {
       setClothes(caps);
     } else if (searchTerm.length > 0) {
       const filteredClothes = caps.filter((item) => {
@@ -65,6 +65,8 @@ export default function Caps(): JSX.Element {
     } else if (colorFilters !== "Color") {
       const filteredClothes = caps.filter((item) => colorFilters.toLowerCase() == item.color.toLowerCase());
       setClothes(filteredClothes);
+    } else if (clothes.length > 0 && colorFilters === "Color") {
+      setClothes(caps);
     }
   };
 
@@ -111,8 +113,10 @@ export default function Caps(): JSX.Element {
           setColorFilters={setColorFilters}
           setGenderFilter={setGenderFilter}
           genderFilter={genderFilter}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
-        <ClothesDisplay
+        <ClothesDisplayCaps
           clothes={clothes}
           priceFilter={priceToggle}
           totalPages={totalPages}

@@ -14,6 +14,7 @@ import {
   NothingFound,
   FilterTag,
   GenderFilterCloseButton,
+  ThumbnailCap,
 } from "./ClothesDisplay.styled";
 import type { Cloth } from "../../pages/Tshirts";
 
@@ -30,7 +31,7 @@ interface ClothesDisplayProps {
   removeGenderFilter: () => void;
 }
 
-export default function ClothesDisplay(props: ClothesDisplayProps) {
+export default function ClothesDisplayCaps(props: ClothesDisplayProps) {
   const { clothes, priceFilter, totalPages, currentPage, setCurrentPage, currentClothes, genderFilter, setGenderFilter, removeGenderFilter } = props;
 
   let pages: number[] = [];
@@ -51,17 +52,15 @@ export default function ClothesDisplay(props: ClothesDisplayProps) {
     }
   };
 
-  const saveState = (e: React.MouseEvent<HTMLAnchorElement>, product: Cloth) => {
+  const saveState = (e: React.MouseEvent<HTMLImageElement>, product: Cloth) => {
     if (e.button === 1) localStorage.setItem("product", JSON.stringify(product));
     else localStorage.setItem("product", JSON.stringify(product));
   };
 
   useEffect(() => {
     //Needed to show filtered clothes
-    if (currentPage > totalPages) {
-      setCurrentPage(1);
-    }
-  }, [genderFilter.men, genderFilter.women, currentClothes]);
+    if (currentPage > totalPages) setCurrentPage(1);
+  }, [currentPage]);
 
   return (
     <ClothesDisplayContainer>
@@ -81,8 +80,8 @@ export default function ClothesDisplay(props: ClothesDisplayProps) {
       <ClothesContainer>
         {currentClothes.map((item) => {
           return (
-            <Card key={item.id} to={`/product/${item.id}`} state={item} onMouseDown={(e) => saveState(e, item)}>
-              <Thumbnail loading="lazy" src={item.image} />
+            <Card key={item.id} to={`/product/${item.id}`} state={item}>
+              <ThumbnailCap loading="lazy" src={item.image} />
               <TextArea>
                 <CompanyName>{item.company}</CompanyName>
                 <ItemName>{item.name}</ItemName>

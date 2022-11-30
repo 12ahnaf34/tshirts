@@ -16,7 +16,7 @@ export default function ProductPage() {
   }, []);
 
   return (
-    <AppContainer style={{ backgroundColor: colors.green }}>
+    <AppContainer style={{ backgroundColor: colors.primary }}>
       <Navbar display={display} setDisplay={setDisplay} />
       <SingleProduct product={product} />
       <Footer />

@@ -22,7 +22,7 @@ export const Title = styled.h1`
   font-family: Varela;
   font-size: 10cqi;
   margin: 0;
-  color: ${colors.altGreen};
+  color: ${colors.black};
   text-align: center;
 
   @media (min-width: 800px) {
@@ -50,7 +50,7 @@ export const TextArea = styled.div`
   grid-template-columns: 1fr;
   gap: 10px;
 
-  background-color: ${colors.white};
+  background-color: ${colors.tertiary};
   padding: 5px;
 
   @media (min-width: 800px) {
@@ -59,7 +59,7 @@ export const TextArea = styled.div`
 `;
 
 export const Text = styled.p`
-  color: ${colors.green};
+  color: ${colors.black};
   margin: 0;
   grid-column: 1;
   align-self: center;
@@ -73,7 +73,8 @@ export const Price = styled.p`
   font-size: 10cqi;
   font-weight: bold;
   margin: 0;
-  color: ${colors.altGreen};
+  color: ${colors.black};
+  background-color: ${colors.tertiary};
   text-align: center;
 
   @media (min-width: 800px) {
@@ -103,7 +104,7 @@ export const Quantity = styled.span`
 
   font-family: Varela;
   font-size: 10cqi;
-  color: ${colors.green};
+  color: ${colors.black};
   text-align: center;
 
   @media (min-width: 800px) {
@@ -112,26 +113,53 @@ export const Quantity = styled.span`
 `;
 
 export const QuantityButton = styled.button`
+  font-family: Varela;
+  font-size: 9cqi;
   border-radius: 5px;
-  border: 2px solid ${colors.green};
-  background-color: ${colors.green};
+  border: 2px solid ${colors.secondary};
+  background-color: ${colors.secondary};
   color: ${colors.white};
   cursor: pointer;
 
+  &:hover {
+    border: 2px solid ${colors.accent};
+    background-color: ${colors.accent};
+    color: ${colors.secondary};
+  }
+
   @media (min-width: 800px) {
-    font-size: 2cqi;
+    font-size: 3cqi;
   }
 `;
 
 export const AddToCartButton = styled.button`
   grid-column: 1;
+
+  padding: 10px 0;
+  font-family: Varela;
+  font-size: 6cqi;
   border-radius: 5px;
-  border: 2px solid ${colors.green};
-  background-color: ${colors.green};
+  border: 2px solid ${colors.secondary};
+  background-color: ${colors.secondary};
   color: ${colors.white};
   cursor: pointer;
 
+  &:hover {
+    border: 2px solid ${colors.accent};
+    background-color: ${colors.accent};
+    color: ${colors.secondary};
+  }
+
   @media (min-width: 800px) {
+    padding: 0;
     font-size: 2cqi;
   }
+`;
+
+export const Description = styled.p`
+  grid-column: 1/3;
+
+  font-family: Varela;
+  background-color: ${colors.tertiary};
+  color: ${colors.black};
 `;

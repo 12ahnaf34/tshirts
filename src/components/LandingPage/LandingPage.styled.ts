@@ -25,7 +25,7 @@ export const Container = styled.div`
   justify-items: center;
   padding-bottom: 50px;
 
-  background-color: ${colors.green};
+  background-color: ${colors.primary};
 `;
 
 export const ClothesContainer = styled.div`
@@ -39,7 +39,7 @@ export const ClothesContainer = styled.div`
   align-items: center;
 
   margin-top: 50px;
-  border: 5px solid ${colors.yellow};
+  border: 5px solid ${colors.secondary};
   background-color: #fff;
 
   @media (min-width: 800px) {
@@ -138,7 +138,7 @@ export const LeftButton = styled.div`
   z-index: 2;
   justify-self: start;
 
-  color: ${colors.altGreen};
+  color: ${colors.accent};
 
   @media (min-width: 800px) {
     display: grid;
@@ -152,7 +152,7 @@ export const LeftButton = styled.div`
     cursor: pointer;
 
     &:hover {
-      background-color: ${colors.yellow};
+      background-color: ${colors.secondary};
       opacity: 50%;
     }
   }
@@ -166,7 +166,7 @@ export const RightButton = styled.div`
   z-index: 2;
   justify-self: end;
 
-  color: ${colors.altGreen};
+  color: ${colors.accent};
 
   @media (min-width: 800px) {
     display: grid;
@@ -180,7 +180,7 @@ export const RightButton = styled.div`
     cursor: pointer;
 
     &:hover {
-      background-color: ${colors.yellow};
+      background-color: ${colors.secondary};
       opacity: 50%;
     }
   }
@@ -195,9 +195,8 @@ export const ProgressBar = styled.div<ProgressBar>`
   bottom: 0px;
 
   padding: 0;
-  background: linear-gradient(to right, ${colors.altGreen}, ${colors.altGreen});
-  --duration: 5;
-  animation: ${({ animation }) => animation || "roundtime"};
+  background: linear-gradient(to right, ${colors.accent}, ${colors.accent});
+  animation: ${({ animation }) => animation};
   transform-origin: left center;
 
   @keyframes roundtime {
@@ -376,7 +375,7 @@ export const LinkText = styled.p<TextProps>`
   font-size: 8cqi;
   font-weight: bold;
   background-color: ${({ backgroundColor }) => backgroundColor || colors.white};
-  color: ${({ fontColor }) => fontColor || colors.altGreen};
+  color: ${({ fontColor }) => fontColor || colors.tertiary};
 
   @media (min-width: 800px) {
     font-size: 4cqi;

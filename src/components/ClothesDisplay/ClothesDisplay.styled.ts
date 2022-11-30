@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { colors } from "../../App.styled";
 
@@ -13,7 +14,7 @@ export const ClothesDisplayContainer = styled.div`
   width: 100%;
   display: grid;
 
-  background-color: ${colors.green};
+  background-color: ${colors.primary};
   font-family: Varela;
   padding-bottom: 50px;
 `;
@@ -49,7 +50,7 @@ export const ClothesContainer = styled.div`
 
 //extra box shadow, not sure why it was there
 //,0 10px 10px rgba(0, 0, 0, 0.22)
-export const Card = styled.div`
+export const Card = styled(Link)`
   width: 70%;
   height: fit-content;
   display: grid;
@@ -57,6 +58,7 @@ export const Card = styled.div`
   grid-template-columns: 1fr;
   justify-items: center;
 
+  text-decoration: none;
   border-radius: 5px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0, 0, 0, 0.22);
   background-color: ${colors.white};
@@ -76,13 +78,27 @@ export const Thumbnail = styled.img`
   }
 `;
 
+export const ThumbnailCap = styled.img`
+  max-width: 100%;
+  height: 40cqi;
+
+  @media (min-width: 800px) {
+    height: 15cqi;
+  }
+`;
+
 export const TextArea = styled.div`
-  height: 15cqi;
+  height: 40cqi;
   display: grid;
 
   align-self: end;
   justify-items: center;
   align-items: end;
+  color: ${colors.black};
+
+  @media (min-width: 800px) {
+    height: 15cqi;
+  }
 `;
 
 export const CompanyName = styled.p`
@@ -126,7 +142,7 @@ export const PageNumber = styled.span`
   justify-self: center;
   font-family: Varela;
   font-size: 8cqi;
-  color: ${colors.yellow};
+  color: ${colors.secondary};
 
   @media (min-width: 800px) {
     font-size: 4cqi;
@@ -142,14 +158,14 @@ export const PageButton = styled.button<PageButton>`
   font-size: 4cqi;
   border: none;
   border-radius: 10px;
-  background-color: ${colors.yellow};
-  color: ${colors.green};
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
   padding: 10px;
   cursor: pointer;
   transition: all 0.4s ease;
 
   &:hover {
-    background-color: ${colors.orange};
+    background-color: ${colors.accent};
     color: ${colors.white};
   }
 
@@ -173,8 +189,8 @@ export const NothingFound = styled.p`
   padding: 2cqi;
   font-size: 6cqi;
   text-align: center;
-  background-color: ${colors.yellow};
-  color: ${colors.green};
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
 
   @media (min-width: 800px) {
     font-size: 3cqi;
@@ -187,8 +203,8 @@ export const FilterTag = styled.span`
   border-radius: 10px;
   padding: 5px;
   font-size: 5cqi;
-  background-color: ${colors.white};
-  color: ${colors.orange};
+  background-color: ${colors.tertiary};
+  color: ${colors.black};
   margin: 10px;
 
   @media (min-width: 800px) {
@@ -197,11 +213,14 @@ export const FilterTag = styled.span`
 `;
 
 export const GenderFilterCloseButton = styled.button`
-  background-color: ${colors.green};
-  color: ${colors.white};
+  margin-left: 5px;
+
+  background-color: ${colors.primary};
+  color: ${colors.black};
   font-size: 5cqi;
-  border: 2px solid ${colors.white};
+  border: 2px solid ${colors.primary};
   border-radius: 10px;
+  cursor: pointer;
 
   @media (min-width: 800px) {
     font-size: 2cqi;

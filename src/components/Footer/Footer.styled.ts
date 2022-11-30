@@ -7,7 +7,7 @@ export const FooterContainer = styled.div`
 
   grid-template-columns: 1fr 1fr;
 
-  background-color: ${colors.altGreen};
+  background-color: ${colors.black};
   padding-top: 50px;
 
   @media (min-width: 800px) {
@@ -59,7 +59,8 @@ export const Item = styled.li`
   display: grid;
   font-size: 4cqi;
   justify-self:center;
-  color: ${colors.white};
+  text-align:center;
+  color: ${colors.primary};
   
 
   @media(min-width:800px){

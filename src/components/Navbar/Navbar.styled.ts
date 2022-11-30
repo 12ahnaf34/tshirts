@@ -28,7 +28,7 @@ export const NavbarContainer = styled.div`
   border: 0;
   align-items: center;
   justify-items: center;
-  background-color: ${colors.green};
+  background-color: ${colors.primary};
 
   @media (min-width: 800px) {
     grid-template-columns: 1fr 2fr 1fr;
@@ -41,7 +41,7 @@ export const NavbarContainer = styled.div`
 
 export const Icon = styled(IoIosMenu)`
   font-size: 11cqi;
-  color: ${colors.yellow};
+  color: ${colors.secondary};
   cursor: pointer;
   transition: all 0.4s ease;
 
@@ -64,8 +64,8 @@ export const Dropdown = styled.div`
   justify-items: center;
   align-items: center;
 
-  background-color: ${colors.green};
-  color: ${colors.yellow};
+  background-color: ${colors.primary};
+  color: ${colors.secondary};
 
   @media (min-width: 800px) {
     display: none;
@@ -74,16 +74,16 @@ export const Dropdown = styled.div`
 
 export const Button = styled.button`
   border-radius: 10px;
-  border: 3px solid ${colors.yellow};
-  background-color: ${colors.yellow};
-  color: ${colors.green};
+  border: 3px solid ${colors.secondary};
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
   font-size: 10cqi;
   cursor: pointer;
 `;
 
 export const Link = styled.a`
   text-decoration: none;
-  color: ${colors.yellow};
+  color: ${colors.secondary};
   font-size: 10cqi;
   cursor: pointer;
 `;
@@ -98,7 +98,7 @@ export const List = styled.ul`
   list-style: none;
   padding: 20px 40px;
   border-radius: 5px;
-  background-color: ${colors.yellow};
+  background-color: ${colors.secondary};
 
   @media (min-width: 1200px) {
     width: 40cqi;
@@ -122,17 +122,17 @@ export const ExternalLink = styled.a`
   font-weight: bold;
   font-size: 3cqi;
   text-decoration: none;
-  background-color: ${colors.yellow};
-  color: ${colors.green};
-  border-bottom: 3px solid ${colors.green};
-  border-top: 3px solid ${colors.green};
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
+  border-bottom: 3px solid ${colors.primary};
+  border-top: 3px solid ${colors.primary};
   cursor: pointer;
   transition: all 0.4s ease;
 
   &:hover {
-    border-bottom: 3px solid ${colors.orange};
-    border-top: 3px solid ${colors.orange};
-    color: ${colors.orange};
+    border-bottom: 3px solid ${colors.accent};
+    border-top: 3px solid ${colors.accent};
+    color: ${colors.accent};
   }
 
   @media (min-width: 800px) {
@@ -159,8 +159,15 @@ export const Title = styled.a`
   text-align: center;
   font-weight: bold;
   font-size: 8cqi;
-  color: ${colors.yellow};
+  border-radius: 10px;
+  color: ${colors.secondary};
   cursor: pointer;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: ${colors.secondary};
+    color: ${colors.accent};
+  }
 
   @media (min-width: 800px) {
     grid-column: 2;
@@ -192,8 +199,8 @@ export const UserIcons = styled.div`
   margin-right: 10px;
 
   @media (min-width: 800px) {
-    grid-template-columns: 1fr 2fr;
-    align-self: start;
+    grid-template-columns: 1fr;
+    align-self: center;
   }
 
   @media (min-width: 1200px) {
@@ -210,14 +217,14 @@ export const UserIcons = styled.div`
 export const SignIn = styled(MdAccountBox)`
   grid-column: 2;
 
-  background-color: ${colors.green};
+  background-color: ${colors.primary};
   color: ${colors.white};
   font-size: 11cqi;
   cursor: pointer;
   transition: all 0.4s ease;
 
   &:hover {
-    color: ${colors.yellow};
+    color: ${colors.secondary};
   }
 
   @media (min-width: 800px) {
@@ -235,13 +242,14 @@ export const Cart = styled(MdShoppingCart)`
   font-size: 10cqi;
   border-radius: 10px;
   padding: 6px;
-  background-color: ${colors.white};
-  color: ${colors.green};
+  background-color: ${colors.accent};
+  color: ${colors.secondary};
   cursor: pointer;
   transition: all 0.4s ease;
 
   &:hover {
-    background-color: ${colors.yellow};
+    background-color: ${colors.secondary};
+    color: ${colors.accent};
   }
 
   @media (min-width: 800px) {
@@ -257,7 +265,7 @@ export const Cart = styled(MdShoppingCart)`
 export const Logout = styled(MdLogout)`
   display: none;
   background-color: ${colors.white};
-  color: ${colors.green};
+  color: ${colors.primary};
   font-size: 6cqi;
   border-radius: 10px;
   padding: 5px;
@@ -265,7 +273,7 @@ export const Logout = styled(MdLogout)`
   transition: all 0.4s ease;
 
   &:hover {
-    background-color: ${colors.yellow};
+    background-color: ${colors.secondary};
   }
 
   @media (min-width: 800px) {
@@ -285,14 +293,14 @@ export const GreetText = styled.span`
   align-self: top;
 
   padding: 3px;
-  color: ${colors.green};
-  background-color: ${colors.white};
+  color: ${colors.secondary};
+  background-color: ${colors.accent};
   font-size: 3cqi;
   font-weight: bold;
   border-radius: 10px;
 
   @media (min-width: 800px) {
-    font-size: 1.5cqi;
+    font-size: 2cqi;
   }
   @media (min-width: 1200px) {
     font-size: 1.2cqi;
@@ -306,8 +314,8 @@ export const LogoutButton = styled(Button)`
 
   margin-top: 15px;
   opacity: 0;
-  background-color: ${colors.yellow};
-  color: ${colors.green};
+  background-color: ${colors.secondary};
+  color: ${colors.accent};
   font-family: Varela;
   font-size: 3cqi;
   font-weight: 600;
@@ -335,7 +343,7 @@ export const LogoutContainer = styled.div`
   border-radius: 10px;
 
   &:hover {
-    background-color: ${colors.white};
+    background-color: ${colors.accent};
     padding: 3px;
   }
 
@@ -345,7 +353,7 @@ export const LogoutContainer = styled.div`
 
   &:hover ~ &${Cart} {
     align-self: start;
-    color: ${colors.orange};
+    color: ${colors.accent};
   }
 
   &:hover ${LogoutButton} {

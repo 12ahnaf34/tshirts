@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Cloth } from "../../pages/Tshirts";
 import {
   AddToCartButton,
+  Description,
   MainImage,
   Price,
   Quantity,
@@ -46,6 +47,7 @@ export default function SingleProduct(props: Props) {
         <Text>Brand: {product.company}</Text>
         <Text>Type: {proper.type}</Text>
         <Text>Color: {proper.color}</Text>
+        <Description>{product.description}</Description>
         <QuantityContainer>
           <QuantityButton onClick={() => plusMinusQuantity("down")}>-</QuantityButton>
           <Quantity>{quantity}</Quantity>
