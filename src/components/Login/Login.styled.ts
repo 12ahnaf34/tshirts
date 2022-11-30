@@ -11,7 +11,7 @@ export const LoginContainer = styled.div`
 
   justify-items: center;
 
-  background-color: ${colors.green};
+  background-color: ${colors.primary};
 `;
 
 export const NormalForm = styled.form`
@@ -89,15 +89,15 @@ export const Button = styled.button`
   font-size: ${smallFontSize};
   padding: 10px;
   border-radius: 10px;
-  border: 3px solid ${colors.yellow};
-  background-color: ${colors.yellow};
-  color: ${colors.green};
+  border: 3px solid ${colors.secondary};
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
   cursor: pointer;
   transition: all 0.4s ease;
 
   &:hover {
-    border: 3px solid ${colors.orange};
-    background-color: ${colors.orange};
+    border: 3px solid ${colors.accent};
+    background-color: ${colors.accent};
     color: ${colors.white};
   }
 
@@ -108,7 +108,7 @@ export const Button = styled.button`
 
 export const RegisterButton = styled(Button)`
   background-color: ${colors.white};
-  border: 3px solid ${colors.yellow};
+  border: 3px solid ${colors.secondary};
   font-size: ${smallFontSize};
 
   @media (min-width: 800px) {

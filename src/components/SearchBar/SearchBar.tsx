@@ -45,6 +45,8 @@ interface SearchBarProps {
   setColorFilters: Dispatch<SetStateAction<string>>;
   genderFilter: { men: boolean; women: boolean };
   setGenderFilter: Dispatch<SetStateAction<{ men: boolean; women: boolean }>>;
+  currentPage: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
   runSearch: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
@@ -74,6 +76,8 @@ export default function SearchBar(props: SearchBarProps) {
     genderFilter,
     setGenderFilter,
     runSearch,
+    currentPage,
+    setCurrentPage,
   } = props;
 
   const [colors, setColors] = useState<string[]>([]);
@@ -87,18 +91,11 @@ export default function SearchBar(props: SearchBarProps) {
       if (!currentColors.includes(final)) currentColors.push(final);
     }
     setColors(currentColors);
-  }, []);
+  }, [clothes]);
 
   const filterToggle = () => setFilterDisplay((old) => !old);
-
-  const handleSearch = (e: React.FormEvent<HTMLInputElement>) => {
-    setSearchTerm(e.currentTarget.value);
-  };
-
-  const onRunSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(e);
-    runSearch(e);
-  };
+  const handleSearch = (e: React.FormEvent<HTMLInputElement>) => setSearchTerm(e.currentTarget.value);
+  const onRunSearch = (e: React.FormEvent<HTMLFormElement>) => runSearch(e);
 
   const runGenderFilter = (gender: string) => {
     if (gender == "men") {
@@ -131,13 +128,20 @@ export default function SearchBar(props: SearchBarProps) {
   }, [clothes, priceToggle]);
 
   const filterColor = (e: React.ChangeEvent<HTMLSelectElement>, text?: string) => {
+    if (clothes.length === 0) window.location.reload();
     if (e.target.value == "Color" || text == "Color") {
-      setClothes(tShirts);
+      const currentClothesType = clothes[0].id[0];
+      if (currentClothesType === "T") setClothes(tShirts);
+      else if (currentClothesType === "P") setClothes(pants);
+      else if (currentClothesType === "C") setClothes(caps);
+
+      setGenderFilter({ men: false, women: false });
       setColorFilters(e.target.value);
     } else {
       const filteredClothes = clothes.filter((item) => e.target.value.toLowerCase() == item.color.toLowerCase());
       setColorFilters(e.target.value);
       setClothes(filteredClothes);
+      setCurrentPage(1);
     }
   };
 

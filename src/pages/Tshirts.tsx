@@ -55,6 +55,7 @@ export default function Tshirts() {
       setColorFilters("Color");
       setClothes(filteredClothes);
     }
+    setSearchTerm("");
     localStorage.setItem("searchTerm", "");
   }, []);
 
@@ -81,7 +82,7 @@ export default function Tshirts() {
 
   const runSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (searchTerm === "") {
+    if (searchTerm === "" || searchTerm.toString.length === 0) {
       setClothes(tShirts);
     } else {
       const filteredClothes = tShirts.filter((item) => {
@@ -122,6 +123,8 @@ export default function Tshirts() {
           setColorFilters={setColorFilters}
           setGenderFilter={setGenderFilter}
           genderFilter={genderFilter}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
         <ClothesDisplay
           clothes={clothes}

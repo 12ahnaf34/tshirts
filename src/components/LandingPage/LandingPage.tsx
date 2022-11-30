@@ -37,13 +37,17 @@ interface Cloth {
   tags: string[];
 }
 
+//original animations
+// const animationString = `roundtime calc(var(${duration}) * 1s) linear infinite`;
+// const string = `time calc(var(${duration}) * 1s) linear  infinite`;
+
 export default function LandingPage(): JSX.Element {
   const [array, setArray] = useState<Cloth[][]>([tShirts, pants, caps]);
   const [index, setIndex] = useState<number>(0);
   const [resetProgress, setResetProgress] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(5000);
-  const animationString = "roundtime calc(var(--duration) * 1s) linear infinite";
-  const string = "time calc(var(--duration) * 1s) linear  infinite";
+  const animationString = `roundtime ${duration / 1000}s linear infinite`;
+  const string = `time ${duration / 1000}s linear  infinite`;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,7 +60,6 @@ export default function LandingPage(): JSX.Element {
 
     if (duration == 0) {
       setDuration(5000);
-      return () => clearInterval(interval);
     }
 
     return () => clearInterval(interval);
@@ -141,7 +144,7 @@ export default function LandingPage(): JSX.Element {
             Mesh
           </LinkText>
         </SmallLink>
-        <SmallLink image="url(/weeb.png)" to={"/tshrits"} state={"weeb"} onMouseDown={(e) => saveSearchTerm(e, "weeb")}>
+        <SmallLink image="url(/weeb.png)" to={"/tshirts"} state={"weeb"} onMouseDown={(e) => saveSearchTerm(e, "weeb")}>
           <LinkText backgroundColor="" fontColor="#f72a2d">
             Weeb
           </LinkText>

@@ -6,7 +6,7 @@ export const SearchBarContainer = styled.div`
   width: 100%;
   display: grid;
 
-  background-color: ${colors.green};
+  background-color: ${colors.primary};
 `;
 
 export const OneLine = styled.form`
@@ -32,13 +32,14 @@ export const Search = styled.input`
   margin: 0;
   padding: 10px;
   border-radius: 5px;
-  border: 2px solid ${colors.green};
+  border: 2px solid ${colors.secondary};
   font-family: Varela;
   font-size: 6cqi;
-  color: ${colors.green};
+  color: ${colors.secondary};
 
   &:focus {
-    outline: 2px solid ${colors.white};
+    outline: 0px solid ${colors.accent};
+    border: 4px solid ${colors.accent};
   }
 
   @media (min-width: 800px) {
@@ -55,9 +56,9 @@ export const SearchButton = styled.button`
   align-self: center;
 
   border-radius: 7px;
-  border: 2px solid ${colors.yellow};
-  background-color: ${colors.yellow};
-  color: ${colors.green};
+  border: 2px solid ${colors.secondary};
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
   font-family: Varela;
   font-size: 6cqi;
   font-weight: 600;
@@ -65,9 +66,9 @@ export const SearchButton = styled.button`
   transition: all 0.4s ease;
 
   &:hover {
-    border: 2px solid ${colors.orange};
-    background-color: ${colors.orange};
-    color: ${colors.white};
+    border: 2px solid ${colors.accent};
+    background-color: ${colors.accent};
+    color: ${colors.secondary};
   }
 
   &:active {
@@ -89,17 +90,17 @@ export const Filter = styled(BsFillFilterSquareFill)`
   justify-self: right;
 
   font-size: 10cqi;
-  border: 2px solid ${colors.yellow};
-  background-color: ${colors.green};
-  color: ${colors.yellow};
+  border: 2px solid ${colors.secondary};
+  background-color: ${colors.primary};
+  color: ${colors.secondary};
   border-radius: 7px;
   cursor: pointer;
   transition: all 0.4s ease;
 
   &:hover {
-    border: 2px solid ${colors.orange};
-    background-color: ${colors.white};
-    color: ${colors.orange};
+    border: 2px solid ${colors.accent};
+    background-color: ${colors.secondary};
+    color: ${colors.accent};
   }
 
   &:active {
@@ -142,7 +143,7 @@ export const FilterSidebar = styled.div`
   width: 20cqi;
 
   background-color: ${colors.white};
-  color: ${colors.green};
+  color: ${colors.primary};
 `;
 
 export const FilterOptionsContainer = styled.div`
@@ -158,23 +159,23 @@ export const FilterOptionsContainer = styled.div`
   border-radius: 10px;
   margin: 20px 0;
   background-color: ${colors.white};
-  color: ${colors.green};
+  color: ${colors.primary};
 `;
 
 export const Button = styled.button`
   width: stretch;
   min-height: 15cqi;
-  color: ${colors.green};
-  background-color: ${colors.yellow};
-  border: 3px solid ${colors.yellow};
+  color: ${colors.primary};
+  background-color: ${colors.secondary};
+  border: 3px solid ${colors.secondary};
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.4s ease;
 
   &:hover {
-    border: 2px solid ${colors.white};
-    background-color: ${colors.green};
-    color: ${colors.white};
+    border: 2px solid ${colors.accent};
+    background-color: ${colors.accent};
+    color: ${colors.secondary};
   }
 
   @media (min-width: 800px) {
@@ -188,17 +189,17 @@ export const ColorSelect = styled.select`
 
   border: none;
   border-radius: 10px;
-  background-color: ${colors.yellow};
-  color: ${colors.green};
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
   text-align: center;
   cursor: pointer;
 
   transition: all 0.4s ease;
 
   &:hover {
-    border: 2px solid ${colors.white};
-    background-color: ${colors.green};
-    color: ${colors.white};
+    border: 2px solid ${colors.accent};
+    background-color: ${colors.accent};
+    color: ${colors.secondary};
   }
 
   Option {
@@ -215,6 +216,6 @@ export const ColorSelect = styled.select`
 
 export const Option = styled.option`
   &:hover {
-    background-color: ${colors.orange};
+    background-color: ${colors.accent};
   }
 `;
