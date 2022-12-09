@@ -37,14 +37,14 @@ export default function SingleProduct(props: Props) {
   const [notificationDisplay, setNotificationDisplay] = useState<string>("none");
 
   useEffect(() => {
-    const firstChar = product.type[0].toUpperCase();
-    const firstCharColor = product.color[0].toUpperCase();
-    const rest = product.type.slice(1, product.type.length);
-    const restColor = product.color.slice(1, product.type.length);
+    const firstChar = product.color[0].toUpperCase();
+    const rest = product.color.slice(1, product.color.length);
     const final = firstChar + rest;
-    const finalColor = firstCharColor + restColor;
-    setProper({ type: final, color: finalColor });
-  }, [product.type]);
+    const typeFirstChar = product.type[0].toUpperCase();
+    const typeRest = product.type.slice(1, product.type.length);
+    const typeFinal = typeFirstChar + typeRest;
+    setProper({ type: typeFinal, color: final });
+  });
 
   useEffect(() => {
     if (notificationDisplay) {
