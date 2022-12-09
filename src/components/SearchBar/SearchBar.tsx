@@ -95,6 +95,7 @@ export default function SearchBar(props: SearchBarProps) {
 
   const filterToggle = () => setFilterDisplay((old) => !old);
   const handleSearch = (e: React.FormEvent<HTMLInputElement>) => setSearchTerm(e.currentTarget.value);
+
   const onRunSearch = (e: React.FormEvent<HTMLFormElement>) => runSearch(e);
 
   const runGenderFilter = (gender: string) => {

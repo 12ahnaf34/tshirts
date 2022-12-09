@@ -74,7 +74,7 @@ export default function Caps(): JSX.Element {
   const runSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (searchTerm === "" || searchTerm.toString.length === 0) {
+    if (searchTerm === "" || searchTerm.length === 0) {
       setColorFilters("Color");
       removeGenderFilter();
       setClothes(caps);

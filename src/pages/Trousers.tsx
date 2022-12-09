@@ -82,7 +82,7 @@ export default function Trousers(): JSX.Element {
   const runSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (searchTerm === "" || searchTerm.toString.length === 0) {
+    if (searchTerm === "" || searchTerm.length === 0) {
       removeGenderFilter();
       setColorFilters("Color");
       setClothes(pants);

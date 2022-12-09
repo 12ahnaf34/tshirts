@@ -83,7 +83,7 @@ export default function Tshirts() {
 
   const runSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (searchTerm === "" || searchTerm.toString.length === 0) {
+    if (searchTerm === "" || searchTerm.length === 0) {
       removeGenderFilter();
       setColorFilters("Color");
       setClothes(tShirts);
@@ -97,7 +97,6 @@ export default function Tshirts() {
           item.type.replace(/\s/g, "").includes(searchTerm.replace(/\s/g, ""))
         );
       });
-
       removeGenderFilter();
       setColorFilters("Color");
       setClothes(filteredClothes);
