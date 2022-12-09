@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button, EmailInput, EmailLabel, LoginContainer, NormalForm, PasswordInput, PasswordLabel, RegisterButton } from "./Login.styled";
 import type { Dispatch, SetStateAction } from "react";
-import { useRouteLoaderData } from "react-router-dom";
-import { confirmPasswordReset } from "firebase/auth";
 
 interface LoginProps {
   register: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;

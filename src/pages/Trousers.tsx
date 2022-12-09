@@ -83,8 +83,8 @@ export default function Trousers(): JSX.Element {
     e.preventDefault();
 
     if (searchTerm === "" || searchTerm.toString.length === 0) {
-      console.log("trigger");
-      setGenderFilter({ men: false, women: false });
+      removeGenderFilter();
+      setColorFilters("Color");
       setClothes(pants);
     } else {
       console.log(searchTerm);
@@ -97,6 +97,9 @@ export default function Trousers(): JSX.Element {
           item.type.replace(/\s/g, "").includes(searchTerm.replace(/\s/g, ""))
         );
       });
+
+      console.log("first");
+      removeGenderFilter();
       setColorFilters("Color");
       setClothes(filteredClothes);
     }

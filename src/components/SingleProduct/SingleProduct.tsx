@@ -1,5 +1,9 @@
-import { useState, useEffect } from "react";
-import { Cloth } from "../../pages/Tshirts";
+import { useState, useEffect, useContext } from "react";
+import { store, auth } from "../../fire";
+import { addDoc, collection, CollectionReference, doc, getDoc, getDocs, onSnapshot, setDoc } from "firebase/firestore";
+import type { Cloth } from "../../pages/Tshirts";
+import type { QuerySnapshot, DocumentData } from "firebase/firestore";
+import type { Dispatch, SetStateAction } from "react";
 import {
   AddToCartButton,
   Description,
@@ -13,13 +17,19 @@ import {
   TextArea,
   Title,
 } from "./SingleProduct.styled";
+import { User } from "firebase/auth";
+import { CartContext } from "../../context/CartContext";
 
 interface Props {
+  user: User | null;
   product: Cloth;
 }
 
 export default function SingleProduct(props: Props) {
-  const { product } = props;
+  const { product, user } = props;
+
+  const cart = useContext(CartContext);
+
   const [quantity, setQuantity] = useState(1);
   const [proper, setProper] = useState<{ type: string; color: string }>({ type: "", color: "" });
 
@@ -38,6 +48,16 @@ export default function SingleProduct(props: Props) {
     else if (direction == "down" && quantity > 1) setQuantity((old) => old - 1);
   };
 
+  const addToCart = async () => {
+    const item = {
+      item: product,
+      quantity: quantity,
+    };
+    if (user) {
+      await addDoc(collection(store, user?.uid), item);
+    }
+  };
+
   return (
     <SingleProductContainer>
       <Title>{product.name}</Title>
@@ -53,7 +73,7 @@ export default function SingleProduct(props: Props) {
           <Quantity>{quantity}</Quantity>
           <QuantityButton onClick={() => plusMinusQuantity("up")}>+</QuantityButton>
         </QuantityContainer>
-        <AddToCartButton>Add to Cart</AddToCartButton>
+        <AddToCartButton onClick={addToCart}>Add to Cart</AddToCartButton>
       </TextArea>
     </SingleProductContainer>
   );

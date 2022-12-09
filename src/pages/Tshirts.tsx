@@ -52,6 +52,7 @@ export default function Tshirts() {
         );
       });
 
+      setGenderFilter({ men: false, women: false });
       setColorFilters("Color");
       setClothes(filteredClothes);
     }
@@ -83,6 +84,8 @@ export default function Tshirts() {
   const runSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (searchTerm === "" || searchTerm.toString.length === 0) {
+      removeGenderFilter();
+      setColorFilters("Color");
       setClothes(tShirts);
     } else {
       const filteredClothes = tShirts.filter((item) => {
@@ -94,6 +97,8 @@ export default function Tshirts() {
           item.type.replace(/\s/g, "").includes(searchTerm.replace(/\s/g, ""))
         );
       });
+
+      removeGenderFilter();
       setColorFilters("Color");
       setClothes(filteredClothes);
     }

@@ -21,6 +21,8 @@ export const NormalForm = styled.form`
 
   font-family: Varela;
   margin-top: 10cqi;
+  padding: 50px;
+  border-radius: 10px;
 `;
 
 export const EmailLabel = styled.label`
@@ -29,7 +31,7 @@ export const EmailLabel = styled.label`
   text-align: left;
   font-family: Varela;
   font-size: ${smallFontSize};
-  color: ${colors.white};
+  color: ${colors.secondary};
 
   @media (min-width: 800px) {
     width: ${inputWidth};
@@ -40,7 +42,8 @@ export const EmailLabel = styled.label`
 export const EmailInput = styled.input`
   width: 80cqi;
 
-  border: 0;
+  border: 2px solid ${colors.tertiary};
+  border-radius: 10px;
   padding: ${padding};
   font-family: Varela;
   font-size: ${smallFontSize};
@@ -58,7 +61,7 @@ export const PasswordLabel = styled.label`
   font-size: ${smallFontSize};
   margin-top: 1cqi;
   text-align: left;
-  color: ${colors.white};
+  color: ${colors.secondary};
 
   @media (min-width: 800px) {
     width: ${inputWidth};
@@ -69,7 +72,8 @@ export const PasswordLabel = styled.label`
 export const PasswordInput = styled.input`
   width: 80cqi;
 
-  border: 0;
+  border: 2px solid ${colors.tertiary};
+  border-radius: 10px;
   padding: ${padding};
   font-family: Varela;
   font-size: ${smallFontSize};
@@ -98,7 +102,7 @@ export const Button = styled.button`
   &:hover {
     border: 3px solid ${colors.accent};
     background-color: ${colors.accent};
-    color: ${colors.white};
+    color: ${colors.secondary};
   }
 
   @media (min-width: 800px) {
@@ -107,8 +111,9 @@ export const Button = styled.button`
 `;
 
 export const RegisterButton = styled(Button)`
-  background-color: ${colors.white};
+  background-color: ${colors.secondary};
   border: 3px solid ${colors.secondary};
+  color: ${colors.white};
   font-size: ${smallFontSize};
 
   @media (min-width: 800px) {

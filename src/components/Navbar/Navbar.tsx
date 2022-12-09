@@ -19,6 +19,7 @@ import {
   GreetText,
   LogoutContainer,
   LogoutButton,
+  CartLink,
 } from "./Navbar.styled";
 
 interface NavbarProps {
@@ -52,7 +53,9 @@ export default function Navbar(props: NavbarProps) {
   const goToCart = () => setRedirect({ login_register: false, cart: true });
 
   if (redirect.login_register) return <Navigate to="/login_register" />;
-  if (redirect.cart) return <Navigate to="/cart" />;
+  // if (redirect.cart) {
+  //   return <Navigate to="/cart" />;
+  // }
 
   if (display) {
     return (
@@ -62,6 +65,7 @@ export default function Navbar(props: NavbarProps) {
         <Link href="/tshirts">T-Shirts</Link>
         <Link href="/trousers">Trousers</Link>
         <Link href="/caps">Caps</Link>
+        <Link href="/cart">Cart</Link>
       </Dropdown>
     );
   } else {
@@ -84,7 +88,9 @@ export default function Navbar(props: NavbarProps) {
           </li>
         </List>
         <UserIcons>
-          <Cart onClick={goToCart} />
+          <CartLink href="/cart">
+            <Cart onClick={goToCart} />
+          </CartLink>
           {currentUser !== null ? (
             <LogoutContainer>
               <GreetText>
