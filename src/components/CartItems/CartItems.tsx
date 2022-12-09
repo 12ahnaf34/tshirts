@@ -5,7 +5,6 @@ import { Cloth } from "../../pages/Tshirts";
 import { store } from "../../fire";
 import { AuthContext } from "../../context/AuthContext";
 import Checkout from "../Checkout/Checkout";
-import { Navigate } from "react-router-dom";
 
 interface Props {
   cart: DocumentData | undefined;
@@ -43,7 +42,6 @@ export default function CartItems(props: Props): JSX.Element {
       let fireId = "";
 
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
         fireId = doc.id;
       });
 
@@ -61,9 +59,9 @@ export default function CartItems(props: Props): JSX.Element {
       <CartItemsContainer>
         <Title>Cart</Title>
         {cart.length > 0 &&
-          cart.map((element: SingleItemType) => {
+          cart.map(function (element: SingleItemType, index: number) {
             return (
-              <SingleItem key={element.item.id}>
+              <SingleItem key={index}>
                 <ItemImage src={element.item.image} />
                 <TextContainer>
                   <ItemText>{element.item.name}</ItemText>

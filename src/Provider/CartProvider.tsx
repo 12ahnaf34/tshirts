@@ -31,7 +31,6 @@ export const CartProvider: React.FC<CartProviderProps> = (props) => {
   };
   useEffect(() => {
     getCart();
-    console.log("triggered");
   }, [user, toggle]);
 
   return <CartContext.Provider value={cart}>{children}</CartContext.Provider>;

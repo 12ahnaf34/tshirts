@@ -8,6 +8,7 @@ import {
   AddToCartButton,
   Description,
   MainImage,
+  Notification,
   Price,
   Quantity,
   QuantityButton,
@@ -19,6 +20,7 @@ import {
 } from "./SingleProduct.styled";
 import { User } from "firebase/auth";
 import { CartContext } from "../../context/CartContext";
+import { Navigate } from "react-router-dom";
 
 interface Props {
   user: User | null;
@@ -32,6 +34,7 @@ export default function SingleProduct(props: Props) {
 
   const [quantity, setQuantity] = useState(1);
   const [proper, setProper] = useState<{ type: string; color: string }>({ type: "", color: "" });
+  const [notificationDisplay, setNotificationDisplay] = useState<string>("none");
 
   useEffect(() => {
     const firstChar = product.type[0].toUpperCase();
@@ -42,6 +45,16 @@ export default function SingleProduct(props: Props) {
     const finalColor = firstCharColor + restColor;
     setProper({ type: final, color: finalColor });
   }, [product.type]);
+
+  useEffect(() => {
+    if (notificationDisplay) {
+      const interval = setTimeout(() => {
+        setNotificationDisplay("none");
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }
+  }, [notificationDisplay]);
 
   const plusMinusQuantity = (direction: string) => {
     if (direction == "up") setQuantity((old) => old + 1);
@@ -55,6 +68,9 @@ export default function SingleProduct(props: Props) {
     };
     if (user) {
       await addDoc(collection(store, user?.uid), item);
+      setNotificationDisplay("block");
+    } else {
+      window.location.href = "/login_register";
     }
   };
 
@@ -75,6 +91,7 @@ export default function SingleProduct(props: Props) {
         </QuantityContainer>
         <AddToCartButton onClick={addToCart}>Add to Cart</AddToCartButton>
       </TextArea>
+      <Notification display={notificationDisplay}>Added to cart</Notification>
     </SingleProductContainer>
   );
 }

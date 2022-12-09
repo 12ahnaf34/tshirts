@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { colors } from "../../App.styled";
 
+interface NotificationProps {
+  display: string;
+}
+
 export const SingleProductContainer = styled.div`
   display: grid;
 
@@ -166,4 +170,15 @@ export const Description = styled.p`
 
   font-family: Varela;
   color: ${colors.black};
+`;
+
+export const Notification = styled.span<NotificationProps>`
+  display: ${({ display }) => display};
+
+  justify-self: center;
+  grid-column: 1/3;
+
+  background-color: ${colors.black};
+  color: ${colors.primary};
+  padding: 20px;
 `;
