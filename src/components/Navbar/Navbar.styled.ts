@@ -60,7 +60,7 @@ export const Dropdown = styled.div`
   display: grid;
 
   grid-template-columns: 1fr;
-  grid-template-rows: 80px 1fr 1fr 1fr 1fr;
+  grid-template-rows: 80px 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
 
@@ -164,11 +164,6 @@ export const Title = styled.a`
   cursor: pointer;
   transition: all 0.4s ease;
 
-  &:hover {
-    background-color: ${colors.secondary};
-    color: ${colors.accent};
-  }
-
   @media (min-width: 800px) {
     grid-column: 2;
     grid-row: 1;
@@ -218,7 +213,7 @@ export const SignIn = styled(MdAccountBox)`
   grid-column: 2;
 
   background-color: ${colors.primary};
-  color: ${colors.white};
+  color: ${colors.accent};
   font-size: 11cqi;
   cursor: pointer;
   transition: all 0.4s ease;
@@ -262,6 +257,10 @@ export const Cart = styled(MdShoppingCart)`
   }
 `;
 
+export const CartLink = styled.a`
+  background-color: ${colors.primary};
+`;
+
 export const Logout = styled(MdLogout)`
   display: none;
   background-color: ${colors.white};
@@ -289,6 +288,7 @@ export const Logout = styled(MdLogout)`
 
 export const GreetText = styled.span`
   width: 100%;
+  height: 100%;
 
   align-self: top;
 

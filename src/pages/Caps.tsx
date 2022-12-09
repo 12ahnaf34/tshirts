@@ -29,8 +29,9 @@ export default function Caps(): JSX.Element {
 
   useEffect(() => {
     setSearchTerm(localStorageSearchTerm);
+    const empty = {};
 
-    if (searchTerm === "" || searchTerm.toString.length === 0) {
+    if (searchTerm === "" || searchTerm === empty) {
       setClothes(caps);
     } else if (searchTerm.length > 0) {
       const filteredClothes = caps.filter((item) => {
@@ -72,7 +73,10 @@ export default function Caps(): JSX.Element {
 
   const runSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (searchTerm === "") {
+
+    if (searchTerm === "" || searchTerm.toString.length === 0) {
+      setColorFilters("Color");
+      removeGenderFilter();
       setClothes(caps);
     } else {
       const filteredClothes = caps.filter((item) => {
@@ -84,6 +88,8 @@ export default function Caps(): JSX.Element {
           item.type.replace(/\s/g, "").includes(searchTerm.replace(/\s/g, ""))
         );
       });
+
+      removeGenderFilter();
       setColorFilters("Color");
       setClothes(filteredClothes);
     }

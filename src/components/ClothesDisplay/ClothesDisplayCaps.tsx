@@ -52,7 +52,7 @@ export default function ClothesDisplayCaps(props: ClothesDisplayProps) {
     }
   };
 
-  const saveState = (e: React.MouseEvent<HTMLImageElement>, product: Cloth) => {
+  const saveState = (e: React.MouseEvent<HTMLAnchorElement>, product: Cloth) => {
     if (e.button === 1) localStorage.setItem("product", JSON.stringify(product));
     else localStorage.setItem("product", JSON.stringify(product));
   };
@@ -80,7 +80,7 @@ export default function ClothesDisplayCaps(props: ClothesDisplayProps) {
       <ClothesContainer>
         {currentClothes.map((item) => {
           return (
-            <Card key={item.id} to={`/product/${item.id}`} state={item}>
+            <Card key={item.id} to={`/product/${item.id}`} state={item} onMouseDown={(e) => saveState(e, item)}>
               <ThumbnailCap loading="lazy" src={item.image} />
               <TextArea>
                 <CompanyName>{item.company}</CompanyName>

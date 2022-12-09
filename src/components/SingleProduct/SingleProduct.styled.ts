@@ -5,13 +5,17 @@ export const SingleProductContainer = styled.div`
   display: grid;
 
   grid-template-columns: 1fr;
-  margin: 20px;
+  padding: 10px;
   margin-bottom: 100px;
+  gap: 20px;
 
   background-color: ${colors.white};
+  border: none;
 
   @media (min-width: 800px) {
     grid-template-columns: 1fr 1fr;
+
+    border: 2px solid ${colors.tertiary};
     margin-bottom: 300px;
   }
 `;
@@ -50,7 +54,7 @@ export const TextArea = styled.div`
   grid-template-columns: 1fr;
   gap: 10px;
 
-  background-color: ${colors.tertiary};
+  background-color: ${colors.primary};
   padding: 5px;
 
   @media (min-width: 800px) {
@@ -63,6 +67,7 @@ export const Text = styled.p`
   margin: 0;
   grid-column: 1;
   align-self: center;
+  font-size: 10cqi;
 
   @media (min-width: 800px) {
     font-size: 2cqi;
@@ -74,7 +79,7 @@ export const Price = styled.p`
   font-weight: bold;
   margin: 0;
   color: ${colors.black};
-  background-color: ${colors.tertiary};
+  background-color: ${colors.primary};
   text-align: center;
 
   @media (min-width: 800px) {
@@ -152,7 +157,7 @@ export const AddToCartButton = styled.button`
 
   @media (min-width: 800px) {
     padding: 0;
-    font-size: 2cqi;
+    font-size: 3cqi;
   }
 `;
 
@@ -160,6 +165,5 @@ export const Description = styled.p`
   grid-column: 1/3;
 
   font-family: Varela;
-  background-color: ${colors.tertiary};
   color: ${colors.black};
 `;
